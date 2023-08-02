@@ -21,7 +21,7 @@ public class PlayerKnight : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        groundCheck = transform.Find("GroundCheck");
+        groundCheck = transform.Find("GroundCheckKnight");
     }
 
     void Update()

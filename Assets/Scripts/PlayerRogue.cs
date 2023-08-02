@@ -17,16 +17,16 @@ public class PlayerRogue : MonoBehaviour
     private Animator animator;
 
 
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        groundCheck = transform.Find("GroundCheck");
+        groundCheck = transform.Find("GroundCheckRogue");
     }
 
     void Update()
     {
+
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         bool isWalking = Mathf.Abs(horizontalInput) > 0.01f;
         animator.SetBool("isWalking", isWalking);
@@ -39,18 +39,16 @@ public class PlayerRogue : MonoBehaviour
         {
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
+
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
-        // Sets movement 
-        rb.velocity = new Vector2(horizontalInput * speed, 0f);
-
         ChangeOrientation();
         SwitchPlayer();
-       
     }
+
     public void isJumping()
     {
         rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
@@ -73,7 +71,6 @@ public class PlayerRogue : MonoBehaviour
         }
     }
 
-    // Switches playable Characters
     public void SwitchPlayer()
     {
         if (Input.GetKeyDown(KeyCode.E))

@@ -8,6 +8,7 @@ public class PlayerMage : MonoBehaviour
     public float jumpForce;
     public GameObject playerKnightScript;
     public GameObject playerRogueScript;
+    public GameObject magicBulletPrefab;
     public bool isFacingRight;
     public bool isWalking;
     public Transform groundCheck;
@@ -21,7 +22,7 @@ public class PlayerMage : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        groundCheck = transform.Find("GroundCheck");
+        groundCheck = transform.Find("GroundCheckMage");
     }
 
     void Update()
@@ -45,6 +46,7 @@ public class PlayerMage : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
 
+        MagicBullet();
         ChangeOrientation();
         SwitchPlayer();
     }
@@ -68,6 +70,20 @@ public class PlayerMage : MonoBehaviour
             Vector2 localScale = transform.localScale;
             localScale.x *= -1f;
             transform.localScale = localScale;
+        }
+    }
+
+    public void MagicBullet()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && isFacingRight)
+        {
+            Vector2 playerPosition = transform.position + new Vector3(+0.2f, 0);
+            Instantiate(magicBulletPrefab, playerPosition, Quaternion.identity);
+        }
+        else if (Input.GetKeyDown(KeyCode.F) && !isFacingRight)
+        {
+            Vector2 playerPosition = transform.position + new Vector3(-0.2f, 0);
+            Instantiate(magicBulletPrefab, playerPosition, Quaternion.identity);
         }
     }
 
