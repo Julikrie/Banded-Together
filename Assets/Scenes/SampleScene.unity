@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &39870270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 39870271}
+  m_Layer: 7
+  m_Name: GroundCheckRogue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &39870271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39870270}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 449056974}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &97193534
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -368,7 +399,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000012663239756, guid: 13c470c5b8dcd4854834911f7e0a9a6c, type: 3}
       propertyPath: m_Name
-      value: Thief
+      value: Rogue
       objectReference: {fileID: 0}
     - target: {fileID: 1000012663239756, guid: 13c470c5b8dcd4854834911f7e0a9a6c, type: 3}
       propertyPath: m_Layer
@@ -471,20 +502,25 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 449056967}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &449056972
+--- !u!4 &449056974 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4000013306724104, guid: 13c470c5b8dcd4854834911f7e0a9a6c, type: 3}
+  m_PrefabInstance: {fileID: 174375319}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &449056975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -496,8 +532,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83d3cd2f3f9212c4a8d7e54cd739fbf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  playerOneScript: {fileID: 1332272194}
+  speed: 9
+  jumpForce: 13
+  playerKnightScript: {fileID: 1332272194}
+  playerMageScript: {fileID: 1077341384}
+  isFacingRight: 0
+  isWalking: 0
+  groundCheck: {fileID: 39870271}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 192
 --- !u!1 &452489107
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,6 +766,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 745176847}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &600883008
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 600883009}
+  m_Layer: 0
+  m_Name: GroundCheckMage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &600883009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600883008}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.041, y: 0.009, z: 0.037111625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1870816803}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745176846
@@ -1027,7 +1102,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1104,7 +1179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpForce: 11
-  playerTwoScript: {fileID: 449056967}
+  playerRogueScript: {fileID: 449056967}
+  playerMageScript: {fileID: 1077341384}
   isFacingRight: 0
   isWalking: 0
   groundCheck: {fileID: 1902201288}
@@ -1136,7 +1212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
       propertyPath: m_Name
-      value: Priest
+      value: Mage
       objectReference: {fileID: 0}
     - target: {fileID: 1000013034572668, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
       propertyPath: m_Layer
@@ -1204,6 +1280,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
+--- !u!4 &1870816803 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4000013296727282, guid: 389c7e1a1dabb4e1e917001420b89c9a, type: 3}
+  m_PrefabInstance: {fileID: 1870816802}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1870816804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077341384}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6cb9d6bd17a62b4396279ad6dd41415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  jumpForce: 12
+  playerKnightScript: {fileID: 1332272194}
+  playerRogueScript: {fileID: 449056967}
+  isFacingRight: 0
+  isWalking: 0
+  groundCheck: {fileID: 600883009}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 192
 --- !u!1 &1902201287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,7 +1317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1902201288}
   m_Layer: 0
-  m_Name: GroundCheck
+  m_Name: GroundCheckKnight
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

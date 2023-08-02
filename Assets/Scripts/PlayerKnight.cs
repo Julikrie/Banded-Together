@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerKnight : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
-    public GameObject playerTwoScript;
+    public GameObject playerRogueScript;
+    public GameObject playerMageScript;
     public bool isFacingRight;
     public bool isWalking;
     public Transform groundCheck;
@@ -77,8 +78,15 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Pressing E");
             rb.velocity = Vector2.zero;
 
-            playerTwoScript.GetComponent<PlayerTwo>().enabled = true;
-            GetComponent<PlayerController>().enabled = false;
+            playerRogueScript.GetComponent<PlayerRogue>().enabled = true;
+            GetComponent<PlayerKnight>().enabled = false;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            rb.velocity = Vector2.zero;
+            
+            playerMageScript.GetComponent<PlayerMage>().enabled = true;
+            GetComponent<PlayerKnight>().enabled = false;
         }
     }
 }
