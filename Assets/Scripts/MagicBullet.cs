@@ -6,14 +6,10 @@ public class MagicBullet : MonoBehaviour
 {
     public float speed = 12f;
     public float lifetime = 1.5f;
-
+      
     void Start()
     {
         Destroy(gameObject, lifetime);
     }
 
-    void Update()
-    {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
-    }
 }

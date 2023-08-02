@@ -6,8 +6,8 @@ public class PlayerKnight : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
-    public GameObject playerRogueScript;
-    public GameObject playerMageScript;
+    public GameObject playerRogue;
+    public GameObject playerMage;
     public bool isFacingRight;
     public bool isWalking;
     public Transform groundCheck;
@@ -77,15 +77,19 @@ public class PlayerKnight : MonoBehaviour
         {
             Debug.Log("Pressing E");
             rb.velocity = Vector2.zero;
-
-            playerRogueScript.GetComponent<PlayerRogue>().enabled = true;
+            gameObject.layer = LayerMask.NameToLayer("Player");
+            playerRogue.layer = LayerMask.NameToLayer("Default");
+            
+            playerRogue.GetComponent<PlayerRogue>().enabled = true;
             GetComponent<PlayerKnight>().enabled = false;
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            rb.velocity = Vector2.zero;
-            
-            playerMageScript.GetComponent<PlayerMage>().enabled = true;
+            rb.velocity = Vector2.zero; 
+            gameObject.layer = LayerMask.NameToLayer("Player");
+            playerMage.layer = LayerMask.NameToLayer("Default");
+
+            playerMage.GetComponent<PlayerMage>().enabled = true;
             GetComponent<PlayerKnight>().enabled = false;
         }
     }

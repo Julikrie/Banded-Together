@@ -6,9 +6,11 @@ public class PlayerMage : MonoBehaviour
 {
     public float speed;
     public float jumpForce;
-    public GameObject playerKnightScript;
-    public GameObject playerRogueScript;
+    public GameObject playerKnight;
+    public GameObject playerRogue;
     public GameObject magicBulletPrefab;
+    public float magicBulletSpeed;
+    public Transform magicBulletSpawn;
     public bool isFacingRight;
     public bool isWalking;
     public Transform groundCheck;
@@ -43,22 +45,24 @@ public class PlayerMage : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
         {
+            Debug.Log("springen");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+        
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            ShootMagic(isFacingRight);
+        }
 
-        MagicBullet();
         ChangeOrientation();
         SwitchPlayer();
     }
 
-    public void isJumping()
-    {
-        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-    }
+    
 
     private bool isGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.8f, groundLayer);
     }
     public void ChangeOrientation()
     {
@@ -73,18 +77,21 @@ public class PlayerMage : MonoBehaviour
         }
     }
 
-    public void MagicBullet()
+    void ShootMagic(bool isFacingRight)
     {
-        if (Input.GetKeyDown(KeyCode.F) && isFacingRight)
+            GameObject bullet = Instantiate(magicBulletPrefab, magicBulletSpawn.position, Quaternion.identity);
+            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+            float distanceToMove = 2f * Time.deltaTime;
+
+        if (isFacingRight) 
         {
-            Vector2 playerPosition = transform.position + new Vector3(+0.2f, 0);
-            Instantiate(magicBulletPrefab, playerPosition, Quaternion.identity);
+            bulletRb.velocity = Vector2.right * magicBulletSpeed;
         }
-        else if (Input.GetKeyDown(KeyCode.F) && !isFacingRight)
+        else
         {
-            Vector2 playerPosition = transform.position + new Vector3(-0.2f, 0);
-            Instantiate(magicBulletPrefab, playerPosition, Quaternion.identity);
+            bulletRb.velocity = Vector2.left * magicBulletSpeed;
         }
+
     }
 
     public void SwitchPlayer()
@@ -93,15 +100,19 @@ public class PlayerMage : MonoBehaviour
         {
             Debug.Log("Pressing Q");
             rb.velocity = Vector2.zero;
+            gameObject.layer = LayerMask.NameToLayer("Player");
+            playerKnight.layer = LayerMask.NameToLayer("Default");
 
-            playerKnightScript.GetComponent<PlayerKnight>().enabled = true;
+            playerKnight.GetComponent<PlayerKnight>().enabled = true;
             GetComponent<PlayerMage>().enabled = false;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
             rb.velocity = Vector2.zero;
+            gameObject.layer = LayerMask.NameToLayer("Player");
+            playerRogue.layer = LayerMask.NameToLayer("Default");
 
-            playerRogueScript.GetComponent<PlayerRogue>().enabled = true;
+            playerRogue.GetComponent<PlayerRogue>().enabled = true;
             GetComponent<PlayerMage>().enabled = false;
         }
     }
