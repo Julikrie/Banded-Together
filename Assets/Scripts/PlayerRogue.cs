@@ -98,6 +98,7 @@ public class PlayerRogue : MonoBehaviour
             rb.velocity = Vector2.zero;
             gameObject.layer = LayerMask.NameToLayer("Player");
             playerKnight.layer = LayerMask.NameToLayer("Default");
+            Camera.main.GetComponent<CameraController>().SetActivePlayer(playerKnight.transform);
 
             playerKnight.GetComponent<PlayerKnight>().enabled = true;
             GetComponent<PlayerRogue>().enabled = false;
@@ -107,10 +108,11 @@ public class PlayerRogue : MonoBehaviour
             rb.velocity = Vector2.zero;
             gameObject.layer = LayerMask.NameToLayer("Player");
             playerMage.layer = LayerMask.NameToLayer("Default");
+            Camera.main.GetComponent<CameraController>().SetActivePlayer(playerMage.transform);
 
             playerMage.GetComponent<PlayerMage>().enabled = true;
       
-      GetComponent<PlayerRogue>().enabled = false;
+            GetComponent<PlayerRogue>().enabled = false;
         }
     }
 }

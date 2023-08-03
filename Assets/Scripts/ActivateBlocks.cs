@@ -5,22 +5,33 @@ using UnityEngine;
 public class ActivateBlocks : MonoBehaviour
 {
     public Sprite activatedBlock;
+    public Sprite startSprite;
     private SpriteRenderer spriteRenderer;
+    private Collider2D colliderHiddenObjects; 
+
 
     private void Start()
     {
-        // Get the SpriteRenderer component attached to this game object
         spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = startSprite;
+
+        colliderHiddenObjects = GetComponent<Collider2D>();
+        colliderHiddenObjects.isTrigger = true; 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Magic Bullet"))
         {
-            Destroy(collision.gameObject);
-            gameObject.layer = LayerMask.NameToLayer("Floor");
+            if (collision.gameObject.CompareTag("Magic Bullet"))
+            {
+                gameObject.layer = LayerMask.NameToLayer("Floor");
 
-            spriteRenderer.sprite = activatedBlock;
+                spriteRenderer.sprite = activatedBlock;
+                Destroy(collision.gameObject);
+
+                colliderHiddenObjects.isTrigger = false;
+            }
         }
     }
 }
+   

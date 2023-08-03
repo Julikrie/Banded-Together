@@ -91,19 +91,20 @@ public class PlayerMage : MonoBehaviour
 
     void ShootMagic(bool isFacingRight)
     {
-            GameObject bullet = Instantiate(magicBulletPrefab, magicBulletSpawn.position, Quaternion.identity);
-            Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-            float distanceToMove = 2f * Time.deltaTime;
+        GameObject bullet = Instantiate(magicBulletPrefab, magicBulletSpawn.position, Quaternion.identity);
+        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+        float distanceToMove = 2f * Time.deltaTime;
 
-        if (isFacingRight) 
+        if (isFacingRight)
         {
             bulletRb.velocity = Vector2.right * magicBulletSpeed;
+            bullet.transform.rotation = Quaternion.Euler(0, 0, 180); 
         }
         else
         {
             bulletRb.velocity = Vector2.left * magicBulletSpeed;
+            bullet.transform.rotation = Quaternion.Euler(0, 0, 0); 
         }
-
     }
 
     public void SwitchPlayer()
@@ -114,6 +115,7 @@ public class PlayerMage : MonoBehaviour
             rb.velocity = Vector2.zero;
             gameObject.layer = LayerMask.NameToLayer("Player");
             playerKnight.layer = LayerMask.NameToLayer("Default");
+            Camera.main.GetComponent<CameraController>().SetActivePlayer(playerKnight.transform);
 
             playerKnight.GetComponent<PlayerKnight>().enabled = true;
             GetComponent<PlayerMage>().enabled = false;
@@ -123,6 +125,7 @@ public class PlayerMage : MonoBehaviour
             rb.velocity = Vector2.zero;
             gameObject.layer = LayerMask.NameToLayer("Player");
             playerRogue.layer = LayerMask.NameToLayer("Default");
+            Camera.main.GetComponent<CameraController>().SetActivePlayer(playerRogue.transform);
 
             playerRogue.GetComponent<PlayerRogue>().enabled = true;
             GetComponent<PlayerMage>().enabled = false;

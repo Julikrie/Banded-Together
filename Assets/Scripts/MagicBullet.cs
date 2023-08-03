@@ -5,7 +5,7 @@ using UnityEngine;
 public class MagicBullet : MonoBehaviour
 {
     public float speed = 12f;
-    public float lifetime = 1.5f;
+    public float lifetime = 1f;
       
     void Start()
     {
