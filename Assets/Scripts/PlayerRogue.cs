@@ -13,6 +13,10 @@ public class PlayerRogue : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
 
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
+    private bool doublejump;
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -39,10 +43,26 @@ public class PlayerRogue : MonoBehaviour
         {
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
+        if (isGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
+        if(isGrounded() && Input.GetKeyDown(KeyCode.Space))
+        {
+            doublejump = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f || doublejump)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            doublejump = !doublejump;
+
+            coyoteTimeCounter = 0f;
         }
 
         ChangeOrientation();
@@ -90,8 +110,8 @@ public class PlayerRogue : MonoBehaviour
             playerMage.layer = LayerMask.NameToLayer("Default");
 
             playerMage.GetComponent<PlayerMage>().enabled = true;
-            GetComponent<PlayerRogue>().enabled = false;
+      
+      GetComponent<PlayerRogue>().enabled = false;
         }
     }
 }
-
