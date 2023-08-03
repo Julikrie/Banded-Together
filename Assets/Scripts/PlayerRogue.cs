@@ -94,7 +94,6 @@ public class PlayerRogue : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-
             rb.velocity = Vector2.zero;
             gameObject.layer = LayerMask.NameToLayer("Player");
             playerKnight.layer = LayerMask.NameToLayer("Default");
@@ -102,6 +101,10 @@ public class PlayerRogue : MonoBehaviour
 
             playerKnight.GetComponent<PlayerKnight>().enabled = true;
             GetComponent<PlayerRogue>().enabled = false;
+
+            gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+            playerKnight.GetComponent<Rigidbody2D>().isKinematic = false;
+
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -111,8 +114,16 @@ public class PlayerRogue : MonoBehaviour
             Camera.main.GetComponent<CameraController>().SetActivePlayer(playerMage.transform);
 
             playerMage.GetComponent<PlayerMage>().enabled = true;
-      
             GetComponent<PlayerRogue>().enabled = false;
+
+            gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+            playerMage.GetComponent<Rigidbody2D>().isKinematic = false;
         }
     }
 }
+
+
+
+
+
+

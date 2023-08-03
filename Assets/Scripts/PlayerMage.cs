@@ -119,6 +119,9 @@ public class PlayerMage : MonoBehaviour
 
             playerKnight.GetComponent<PlayerKnight>().enabled = true;
             GetComponent<PlayerMage>().enabled = false;
+
+            gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+            playerKnight.GetComponent<Rigidbody2D>().isKinematic = false;
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -129,6 +132,9 @@ public class PlayerMage : MonoBehaviour
 
             playerRogue.GetComponent<PlayerRogue>().enabled = true;
             GetComponent<PlayerMage>().enabled = false;
+
+            gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+            playerRogue.GetComponent<Rigidbody2D>().isKinematic = false;
         }
     }
 }
