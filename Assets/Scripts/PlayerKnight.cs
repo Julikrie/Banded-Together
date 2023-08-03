@@ -16,6 +16,8 @@ public class PlayerKnight : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
 
     void Start()
     {
@@ -40,11 +42,11 @@ public class PlayerKnight : MonoBehaviour
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
 
-        if(Input.GetKeyDown(KeyCode.Space) && isGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            coyoteTimeCounter = 0f;
         }
-
         ChangeOrientation();
         SwitchPlayer();
     }

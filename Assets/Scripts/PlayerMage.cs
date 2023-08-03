@@ -16,6 +16,9 @@ public class PlayerMage : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundLayer;
 
+    private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -43,12 +46,21 @@ public class PlayerMage : MonoBehaviour
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
+        if (isGrounded())
         {
-            Debug.Log("springen");
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            coyoteTimeCounter = coyoteTime;
         }
-        
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            coyoteTimeCounter = 0f;
+        }
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             ShootMagic(isFacingRight);

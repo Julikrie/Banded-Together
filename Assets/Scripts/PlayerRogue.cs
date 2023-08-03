@@ -61,7 +61,6 @@ public class PlayerRogue : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             doublejump = !doublejump;
-
             coyoteTimeCounter = 0f;
         }
 
