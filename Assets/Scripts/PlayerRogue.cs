@@ -57,7 +57,7 @@ public class PlayerRogue : MonoBehaviour
             doublejump = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f || doublejump)
+        if ((Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f) || doublejump)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             doublejump = !doublejump;

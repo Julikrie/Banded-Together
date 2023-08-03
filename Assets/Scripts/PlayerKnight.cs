@@ -42,6 +42,15 @@ public class PlayerKnight : MonoBehaviour
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
 
+        if (isGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
