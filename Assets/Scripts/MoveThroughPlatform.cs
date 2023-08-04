@@ -37,7 +37,7 @@ public class MoveThroughPlatform : MonoBehaviour
     {
         BoxCollider2D platformCollider = oneWayPlatform.GetComponent<BoxCollider2D>();
         Physics2D.IgnoreCollision(playerCollider, platformCollider);
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         Physics2D.IgnoreCollision(playerCollider, platformCollider, false);
     }
 }
