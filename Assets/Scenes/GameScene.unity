@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 119498079}
   - component: {fileID: 119498078}
   m_Layer: 10
-  m_Name: box_2
+  m_Name: Box_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 131184442}
   - component: {fileID: 131184441}
   m_Layer: 6
-  m_Name: onewayPlatform (4)
+  m_Name: OnewayPlatform_05
   m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,7 +645,7 @@ GameObject:
   - component: {fileID: 168416305}
   - component: {fileID: 168416304}
   m_Layer: 0
-  m_Name: bricks_2
+  m_Name: Brick_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -729,7 +729,7 @@ GameObject:
   - component: {fileID: 169374508}
   - component: {fileID: 169374507}
   m_Layer: 0
-  m_Name: chain_2
+  m_Name: Chain_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -815,7 +815,7 @@ GameObject:
   - component: {fileID: 200148069}
   - component: {fileID: 200148068}
   m_Layer: 10
-  m_Name: box_3 (4)
+  m_Name: Box_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1024,7 +1024,7 @@ GameObject:
   - component: {fileID: 238543318}
   - component: {fileID: 238543317}
   m_Layer: 6
-  m_Name: onewayPlatform (1)
+  m_Name: OnewayPlatform_02
   m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1187,7 +1187,7 @@ GameObject:
   - component: {fileID: 304143362}
   - component: {fileID: 304143361}
   m_Layer: 0
-  m_Name: chain_2 (1)
+  m_Name: Chain_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1271,7 +1271,7 @@ GameObject:
   - component: {fileID: 331738129}
   - component: {fileID: 331738128}
   m_Layer: 0
-  m_Name: chain_2 (2)
+  m_Name: Chain_12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1386,7 +1386,7 @@ GameObject:
   - component: {fileID: 349837752}
   - component: {fileID: 349837751}
   m_Layer: 0
-  m_Name: dungeon_column (1)
+  m_Name: Column_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1815,6 +1815,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
+  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1903,6 +1904,102 @@ MonoBehaviour:
   followSpeed: 2
   yOffset: 1
   Cameratarget: {fileID: 1332272196}
+--- !u!82 &519420034
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f463747e4b5e34c46bd00c00b81d0008, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.2
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &557267139
 GameObject:
   m_ObjectHideFlags: 0
@@ -2298,7 +2395,7 @@ GameObject:
   - component: {fileID: 638323212}
   - component: {fileID: 638323211}
   m_Layer: 0
-  m_Name: chain_2 (3)
+  m_Name: Chain_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2382,7 +2479,7 @@ GameObject:
   - component: {fileID: 642928780}
   - component: {fileID: 642928779}
   m_Layer: 0
-  m_Name: banner_4
+  m_Name: Banner_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3072,7 +3169,7 @@ GameObject:
   - component: {fileID: 665702939}
   - component: {fileID: 665702938}
   m_Layer: 10
-  m_Name: box_2 (3)
+  m_Name: Box_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3203,7 +3300,7 @@ GameObject:
   - component: {fileID: 668696734}
   - component: {fileID: 668696733}
   m_Layer: 0
-  m_Name: chain_2
+  m_Name: Chain_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3289,7 +3386,7 @@ GameObject:
   - component: {fileID: 682337701}
   - component: {fileID: 682337700}
   m_Layer: 6
-  m_Name: onewayPlatform (2)
+  m_Name: OnewayPlatform_03
   m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3418,7 +3515,7 @@ GameObject:
   - component: {fileID: 740683368}
   - component: {fileID: 740683367}
   m_Layer: 6
-  m_Name: base_door
+  m_Name: BaseDoor_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3596,7 +3693,7 @@ GameObject:
   - component: {fileID: 762640223}
   - component: {fileID: 762640222}
   m_Layer: 0
-  m_Name: dungeon_timber_brace_3
+  m_Name: Timber_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3974,7 +4071,7 @@ GameObject:
   - component: {fileID: 802989424}
   - component: {fileID: 802989423}
   m_Layer: 0
-  m_Name: chain
+  m_Name: Chain_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4058,7 +4155,7 @@ GameObject:
   - component: {fileID: 814180099}
   - component: {fileID: 814180098}
   m_Layer: 0
-  m_Name: chain
+  m_Name: Chain_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4142,7 +4239,7 @@ GameObject:
   - component: {fileID: 839327816}
   - component: {fileID: 839327815}
   m_Layer: 0
-  m_Name: dungeon_column (1)
+  m_Name: Column_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4226,7 +4323,7 @@ GameObject:
   - component: {fileID: 857946072}
   - component: {fileID: 857946071}
   m_Layer: 0
-  m_Name: barrel (2)
+  m_Name: Barrel_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4533,7 +4630,7 @@ GameObject:
   - component: {fileID: 893309201}
   - component: {fileID: 893309200}
   m_Layer: 0
-  m_Name: barrel
+  m_Name: Barrel_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4662,7 +4759,7 @@ GameObject:
   - component: {fileID: 921105196}
   - component: {fileID: 921105195}
   m_Layer: 0
-  m_Name: banner_5
+  m_Name: Banner_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4746,7 +4843,7 @@ GameObject:
   - component: {fileID: 930186452}
   - component: {fileID: 930186451}
   m_Layer: 0
-  m_Name: candle_2
+  m_Name: Candle_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4830,7 +4927,7 @@ GameObject:
   - component: {fileID: 934127778}
   - component: {fileID: 934127777}
   m_Layer: 0
-  m_Name: dead_skeleton_2
+  m_Name: DeadSkeleton_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4914,7 +5011,7 @@ GameObject:
   - component: {fileID: 944809984}
   - component: {fileID: 944809983}
   m_Layer: 0
-  m_Name: banner_5
+  m_Name: Banner_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4998,7 +5095,7 @@ GameObject:
   - component: {fileID: 1029153371}
   - component: {fileID: 1029153370}
   m_Layer: 0
-  m_Name: barrel_2
+  m_Name: Barrel_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5084,7 +5181,7 @@ GameObject:
   - component: {fileID: 1029768889}
   - component: {fileID: 1029768888}
   m_Layer: 10
-  m_Name: box_3 (3)
+  m_Name: Box_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5215,7 +5312,7 @@ GameObject:
   - component: {fileID: 1046652703}
   - component: {fileID: 1046652702}
   m_Layer: 0
-  m_Name: candle_5
+  m_Name: Candle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5669,7 +5766,7 @@ GameObject:
   - component: {fileID: 1060695674}
   - component: {fileID: 1060695673}
   m_Layer: 0
-  m_Name: statue_1
+  m_Name: Statue_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5840,7 +5937,7 @@ GameObject:
   - component: {fileID: 1101746475}
   - component: {fileID: 1101746474}
   m_Layer: 10
-  m_Name: box_3 (1)
+  m_Name: Box_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5971,7 +6068,7 @@ GameObject:
   - component: {fileID: 1118823202}
   - component: {fileID: 1118823201}
   m_Layer: 0
-  m_Name: chain (1)
+  m_Name: Chain_09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6055,7 +6152,7 @@ GameObject:
   - component: {fileID: 1129214187}
   - component: {fileID: 1129214186}
   m_Layer: 0
-  m_Name: dungeon_column
+  m_Name: Column_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6139,7 +6236,7 @@ GameObject:
   - component: {fileID: 1137229544}
   - component: {fileID: 1137229543}
   m_Layer: 0
-  m_Name: banner_2
+  m_Name: Banner_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6223,7 +6320,7 @@ GameObject:
   - component: {fileID: 1151382628}
   - component: {fileID: 1151382627}
   m_Layer: 0
-  m_Name: banner_4
+  m_Name: Banner_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6458,7 +6555,7 @@ GameObject:
   - component: {fileID: 1200849384}
   - component: {fileID: 1200849383}
   m_Layer: 0
-  m_Name: barrel (1)
+  m_Name: Barrel_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6542,7 +6639,7 @@ GameObject:
   - component: {fileID: 1211370323}
   - component: {fileID: 1211370322}
   m_Layer: 0
-  m_Name: chain_2 (1)
+  m_Name: Chain_13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6626,7 +6723,7 @@ GameObject:
   - component: {fileID: 1229308736}
   - component: {fileID: 1229308735}
   m_Layer: 0
-  m_Name: chain_2
+  m_Name: Chain_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6712,7 +6809,7 @@ GameObject:
   - component: {fileID: 1250142375}
   - component: {fileID: 1250142373}
   m_Layer: 6
-  m_Name: onewayPlatform
+  m_Name: OnewayPlatform_01
   m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17616,7 +17713,7 @@ GameObject:
   - component: {fileID: 1311180714}
   - component: {fileID: 1311180713}
   m_Layer: 0
-  m_Name: bricks_4
+  m_Name: Bricks_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32523,7 +32620,7 @@ GameObject:
   - component: {fileID: 1402013547}
   - component: {fileID: 1402013546}
   m_Layer: 0
-  m_Name: dungeon_column
+  m_Name: Column_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32915,7 +33012,7 @@ GameObject:
   - component: {fileID: 1463724949}
   - component: {fileID: 1463724948}
   m_Layer: 6
-  m_Name: onewayPlatform (3)
+  m_Name: OnewayPlatform_04
   m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33044,7 +33141,7 @@ GameObject:
   - component: {fileID: 1469470948}
   - component: {fileID: 1469470947}
   m_Layer: 0
-  m_Name: chain_2 (3)
+  m_Name: Chain_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33201,7 +33298,7 @@ GameObject:
   - component: {fileID: 1540667399}
   - component: {fileID: 1540667398}
   m_Layer: 0
-  m_Name: dead_skeleton_3
+  m_Name: SpikeSkeleton_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33285,7 +33382,7 @@ GameObject:
   - component: {fileID: 1560886277}
   - component: {fileID: 1560886276}
   m_Layer: 0
-  m_Name: candle_5
+  m_Name: Candle_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33369,7 +33466,7 @@ GameObject:
   - component: {fileID: 1567429145}
   - component: {fileID: 1567429144}
   m_Layer: 0
-  m_Name: dungeon_timber_brace_2
+  m_Name: TImber_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33453,7 +33550,7 @@ GameObject:
   - component: {fileID: 1567641952}
   - component: {fileID: 1567641951}
   m_Layer: 0
-  m_Name: dungeon_prop_1
+  m_Name: DungeonProb_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33537,7 +33634,7 @@ GameObject:
   - component: {fileID: 1612926453}
   - component: {fileID: 1612926452}
   m_Layer: 0
-  m_Name: candle_4
+  m_Name: Candle_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33621,7 +33718,7 @@ GameObject:
   - component: {fileID: 1650647294}
   - component: {fileID: 1650647293}
   m_Layer: 0
-  m_Name: banner_1
+  m_Name: Banner_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33851,7 +33948,7 @@ GameObject:
   - component: {fileID: 1680814826}
   - component: {fileID: 1680814825}
   m_Layer: 0
-  m_Name: chain_2 (2)
+  m_Name: Chain_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34205,7 +34302,7 @@ GameObject:
   - component: {fileID: 1772770184}
   - component: {fileID: 1772770183}
   m_Layer: 0
-  m_Name: bricks_1
+  m_Name: Brick_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34289,7 +34386,7 @@ GameObject:
   - component: {fileID: 1783499523}
   - component: {fileID: 1783499522}
   m_Layer: 0
-  m_Name: chain
+  m_Name: Chain_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34549,7 +34646,7 @@ GameObject:
   - component: {fileID: 1806517411}
   - component: {fileID: 1806517410}
   m_Layer: 0
-  m_Name: dead_skeleton_2
+  m_Name: DeadSkeleton_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34633,7 +34730,7 @@ GameObject:
   - component: {fileID: 1806752512}
   - component: {fileID: 1806752511}
   m_Layer: 0
-  m_Name: chain_2 (1)
+  m_Name: Chain_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34885,7 +34982,7 @@ GameObject:
   - component: {fileID: 1873521962}
   - component: {fileID: 1873521961}
   m_Layer: 0
-  m_Name: dungeon_timber_brace_2
+  m_Name: Timber_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34969,7 +35066,7 @@ GameObject:
   - component: {fileID: 1888486008}
   - component: {fileID: 1888486007}
   m_Layer: 0
-  m_Name: sign_2
+  m_Name: Sign_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35198,7 +35295,7 @@ GameObject:
   - component: {fileID: 1919276844}
   - component: {fileID: 1919276843}
   m_Layer: 0
-  m_Name: dungeon_timber_brace_2
+  m_Name: Timber_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35361,7 +35458,7 @@ GameObject:
   - component: {fileID: 1990810835}
   - component: {fileID: 1990810834}
   m_Layer: 0
-  m_Name: campfire_pot_1
+  m_Name: CampfirePot_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35466,7 +35563,7 @@ GameObject:
   - component: {fileID: 2011887392}
   - component: {fileID: 2011887391}
   m_Layer: 0
-  m_Name: chain_2
+  m_Name: Chain_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35718,7 +35815,7 @@ GameObject:
   - component: {fileID: 2054525276}
   - component: {fileID: 2054525275}
   m_Layer: 10
-  m_Name: box_3
+  m_Name: Box_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35849,7 +35946,7 @@ GameObject:
   - component: {fileID: 2092548908}
   - component: {fileID: 2092548907}
   m_Layer: 0
-  m_Name: statue_2
+  m_Name: Statue_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36129,7 +36226,7 @@ GameObject:
   - component: {fileID: 2111370545}
   - component: {fileID: 2111370544}
   m_Layer: 0
-  m_Name: dead_skeleton_1
+  m_Name: DeadSkeleton_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
