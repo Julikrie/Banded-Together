@@ -34034,7 +34034,7 @@ GameObject:
   - component: {fileID: 1728256435}
   - component: {fileID: 1728256434}
   m_Layer: 0
-  m_Name: FinalDoor
+  m_Name: FinalDoor_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
