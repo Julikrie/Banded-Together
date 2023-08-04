@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerKnight : MonoBehaviour
 {
@@ -10,13 +12,14 @@ public class PlayerKnight : MonoBehaviour
     public GameObject playerMage;
     public bool isFacingRight;
     public bool isWalking;
+    public bool isDying;
     public Transform groundCheck;
     public LayerMask groundLayer;
 
     private Rigidbody2D rb;
     private Animator animator;
 
-    private float coyoteTime = 0.2f;
+    private float coyoteTime = 0.1f;
     private float coyoteTimeCounter;
 
     void Start()
@@ -32,6 +35,7 @@ public class PlayerKnight : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         bool isWalking = Mathf.Abs(horizontalInput) > 0.01f;
         animator.SetBool("isWalking", isWalking);
+        animator.SetBool("isDying", isDying);
 
         if (isWalking == true)
         {
@@ -58,6 +62,7 @@ public class PlayerKnight : MonoBehaviour
         }
         ChangeOrientation();
         SwitchPlayer();
+        Die();
     }
 
     public void isJumping()
@@ -111,5 +116,16 @@ public class PlayerKnight : MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             playerMage.GetComponent<Rigidbody2D>().isKinematic = false;
         }
+    }
+    public void Die()
+    {if (HealthManager.Instance.IsPlayerDead())
+        {
+            isDying = true;
+            Invoke("ReloadScene", 1f);
+        }     
+    }
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(1);
     }
 }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerRogue : MonoBehaviour
 {
@@ -12,11 +14,9 @@ public class PlayerRogue : MonoBehaviour
     public bool isWalking;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public bool isDying;
 
-    private float coyoteTime = 0.2f;
-    private float coyoteTimeCounter;
-
-    private bool doublejump;
+    private bool doubleJump;
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -32,8 +32,10 @@ public class PlayerRogue : MonoBehaviour
     {
 
         float horizontalInput = Input.GetAxisRaw("Horizontal");
-        bool isWalking = Mathf.Abs(horizontalInput) > 0.01f;
+        isWalking = Mathf.Abs(horizontalInput) > 0.01f;
         animator.SetBool("isWalking", isWalking);
+        animator.SetBool("isDying", isDying);
+
 
         if (isWalking == true)
         {
@@ -43,29 +45,24 @@ public class PlayerRogue : MonoBehaviour
         {
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
-        if (isGrounded())
-        {
-            coyoteTimeCounter = coyoteTime;
-        }
-        else
-        {
-            coyoteTimeCounter -= Time.deltaTime;
-        }
 
-        if(isGrounded() && Input.GetKeyDown(KeyCode.Space))
-        {
-            doublejump = false;
-        }
 
-        if ((Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f) || doublejump)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            doublejump = !doublejump;
-            coyoteTimeCounter = 0f;
+            Debug.Log("DoubleJump: " + doubleJump);
+            if (isGrounded() || doubleJump)
+            {
+                
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+
+                doubleJump = !doubleJump;
+                
+            }
         }
 
         ChangeOrientation();
         SwitchPlayer();
+        Die();
     }
 
     public void isJumping()
@@ -119,6 +116,18 @@ public class PlayerRogue : MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             playerMage.GetComponent<Rigidbody2D>().isKinematic = false;
         }
+    }
+    public void Die()
+    {
+        if (HealthManager.Instance.IsPlayerDead())
+        {
+            isDying = true;
+            Invoke("ReloadScene", 1f);
+        }
+    }
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(1);
     }
 }
 

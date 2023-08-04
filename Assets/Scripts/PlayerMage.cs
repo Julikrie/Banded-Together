@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerMage : MonoBehaviour
 {
@@ -15,8 +17,10 @@ public class PlayerMage : MonoBehaviour
     public bool isWalking;
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public bool isDying;
 
-    private float coyoteTime = 0.2f;
+
+    private float coyoteTime = 0.1f;
     private float coyoteTimeCounter;
 
     private Rigidbody2D rb;
@@ -36,6 +40,8 @@ public class PlayerMage : MonoBehaviour
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         bool isWalking = Mathf.Abs(horizontalInput) > 0.01f;
         animator.SetBool("isWalking", isWalking);
+        animator.SetBool("isDying", isDying);
+
 
         if (isWalking == true)
         {
@@ -68,6 +74,7 @@ public class PlayerMage : MonoBehaviour
 
         ChangeOrientation();
         SwitchPlayer();
+        Die();
     }
 
     
@@ -137,5 +144,16 @@ public class PlayerMage : MonoBehaviour
             playerRogue.GetComponent<Rigidbody2D>().isKinematic = false;
         }
     }
+    public void Die()
+    {
+        if (HealthManager.Instance.IsPlayerDead())
+        {
+            isDying = true;
+            Invoke("ReloadScene", 1f);
+        }
+    }
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
-

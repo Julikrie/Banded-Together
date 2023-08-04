@@ -4,37 +4,59 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
+    public static HealthManager Instance { get; private set; }
+
     public GameObject[] hearts;
     public int maxHearts = 3;
+    public float invincibleDuration = 1f;
+    private float currentInvincibleDuration = 0f;
     private int currentHearts;
-
-    private void Start()
+    private void Awake()
     {
+        if (Instance != null)
+        {
+            return;
+        }
+
         currentHearts = maxHearts;
         UpdateHeartDisplay();
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if(IsInvincible())
         {
-            DamageTaken(1); // You can adjust the damage value here
+            currentInvincibleDuration -= Time.deltaTime;
         }
     }
+
 
     public void DamageTaken(int damage)
     {
         Debug.Log("DamageTaken method called. Damage: " + damage + ", Current Hearts: " + currentHearts);
-
-        currentHearts -= damage;
-
-        if (currentHearts <= 0)
+       
+        if (!IsInvincible())
         {
-            Debug.Log("Player is dead.");
-            PlayerDead();
+            TakeDamage(damage);
         }
+        
 
+    }
+
+    private void TakeDamage(int damage)
+    {
+        currentInvincibleDuration = invincibleDuration;
+        currentHearts -= damage;
+                
         UpdateHeartDisplay();
+    }
+
+
+    private bool IsInvincible()
+    {
+        return currentInvincibleDuration >= 0f;
     }
 
     private void UpdateHeartDisplay()
@@ -45,8 +67,8 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    private void PlayerDead()
+    public bool IsPlayerDead()
     {
-        // Add code here to handle player death, like game over screen or respawn logic
+        return currentHearts <= 0;
     }
 }
