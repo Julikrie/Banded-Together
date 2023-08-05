@@ -18,11 +18,12 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+        // Move Camera to active Player
         Vector3 newPos = new Vector3(activePlayer.position.x, activePlayer.position.y + yOffset, -10f);
         transform.position = Vector3.Slerp(transform.position, newPos, followSpeed * Time.deltaTime);
     }
 
-    // Method to set the active player for the camera to follow
+    // Set active Player
     public void SetActivePlayer(Transform playerTransform)
     {
         activePlayer = playerTransform;

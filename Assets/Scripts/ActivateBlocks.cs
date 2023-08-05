@@ -19,6 +19,7 @@ public class ActivateBlocks : MonoBehaviour
         colliderHiddenObjects.isTrigger = true; 
     }
 
+    // Compare Tag MagicBullet, set Layer to Floor and change Sprite
     private void OnTriggerEnter2D(Collider2D collision)
     {
         {

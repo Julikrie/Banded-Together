@@ -13,13 +13,15 @@ public class PlayerMage : MonoBehaviour
     public GameObject magicBulletPrefab;
     public float magicBulletSpeed;
     public Transform magicBulletSpawn;
+    public AudioClip magicBulletSound;
+    public AudioClip jumpSound;
     public bool isFacingRight;
     public bool isWalking;
     public Transform groundCheck;
     public LayerMask groundLayer;
     public bool isDying;
 
-
+    private AudioSource audioSource;
     private float coyoteTime = 0.1f;
     private float coyoteTimeCounter;
 
@@ -32,11 +34,12 @@ public class PlayerMage : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         groundCheck = transform.Find("GroundCheckMage");
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-
+        // Set horizontal movement and animations
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         bool isWalking = Mathf.Abs(horizontalInput) > 0.01f;
         animator.SetBool("isWalking", isWalking);
@@ -52,6 +55,7 @@ public class PlayerMage : MonoBehaviour
             rb.velocity = new Vector2(0f, rb.velocity.y);
         }
 
+        // Grace period to jump when leaving Floor
         if (isGrounded())
         {
             coyoteTimeCounter = coyoteTime;
@@ -61,15 +65,19 @@ public class PlayerMage : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
+        // Space to Jump 
         if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             coyoteTimeCounter = 0f;
+            audioSource.PlayOneShot(jumpSound, 0.1f);
         }
 
+        // Shoot MagicBullet with "F"
         if (Input.GetKeyDown(KeyCode.F))
         {
             ShootMagic(isFacingRight);
+            audioSource.PlayOneShot(magicBulletSound, 0.2f);
         }
 
         ChangeOrientation();
@@ -89,6 +97,7 @@ public class PlayerMage : MonoBehaviour
 
         if (horizontalInput < 0f && isFacingRight || horizontalInput > 0f && !isFacingRight)
         {
+            // Flip Character in walking Direction
             isFacingRight = !isFacingRight;
             Vector2 localScale = transform.localScale;
             localScale.x *= -1f;
@@ -96,6 +105,7 @@ public class PlayerMage : MonoBehaviour
         }
     }
 
+    // Set MagicBullet in facing direction of Character
     void ShootMagic(bool isFacingRight)
     {
         GameObject bullet = Instantiate(magicBulletPrefab, magicBulletSpawn.position, Quaternion.identity);
@@ -116,9 +126,10 @@ public class PlayerMage : MonoBehaviour
 
     public void SwitchPlayer()
     {
+        // Switch Player, stop ability to control the Characater and turn on Knight
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("Pressing Q");
             rb.velocity = Vector2.zero;
             gameObject.layer = LayerMask.NameToLayer("Player");
             playerKnight.layer = LayerMask.NameToLayer("Default");
@@ -130,6 +141,8 @@ public class PlayerMage : MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             playerKnight.GetComponent<Rigidbody2D>().isKinematic = false;
         }
+
+        // Switch Player, stop ability to control the Characater and turn on Rogue
         if (Input.GetKeyDown(KeyCode.E))
         {
             rb.velocity = Vector2.zero;
@@ -148,8 +161,10 @@ public class PlayerMage : MonoBehaviour
     {
         if (HealthManager.Instance.IsPlayerDead())
         {
+            // If is dying reload scene after one second
             isDying = true;
             Invoke("ReloadScene", 1f);
+
         }
     }
     public void ReloadScene()

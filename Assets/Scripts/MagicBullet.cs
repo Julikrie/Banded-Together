@@ -9,6 +9,7 @@ public class MagicBullet : MonoBehaviour
       
     void Start()
     {
+        // Spawns and destroys after lifetime
         Destroy(gameObject, lifetime);
     }
 

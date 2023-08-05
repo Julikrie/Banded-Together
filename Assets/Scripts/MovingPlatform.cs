@@ -7,15 +7,13 @@ public class MovingPlatform : MonoBehaviour
     public Transform waypointA, waypointB;
     public int speed;
     Vector2 targetPos;
-    // Start is called before the first frame update
     void Start()
     {
         targetPos = waypointB.position;
     }
 
-    // Update is called once per frame
     void Update()
-    {
+    { // Moving between Waypoints
         if (Vector2.Distance(transform.position, waypointA.position) < 0.1f) targetPos = waypointB.position;
         if (Vector2.Distance(transform.position, waypointB.position) < 0.1f) targetPos = waypointA.position;
 
@@ -24,6 +22,7 @@ public class MovingPlatform : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Set Player to Child of MovingPlatform to not drop
         if (collision.CompareTag("Player"))
         {
             collision.transform.SetParent(this.transform);
@@ -32,6 +31,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        // On Exit of Platform switch back 
             if (collision.CompareTag("Player"))
             {
                 collision.transform.SetParent(null);

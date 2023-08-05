@@ -15,7 +15,9 @@ public class PlayerKnight : MonoBehaviour
     public bool isDying;
     public Transform groundCheck;
     public LayerMask groundLayer;
-
+    public AudioClip jumpSound;
+    
+    private AudioSource audioSource;
     private Rigidbody2D rb;
     private Animator animator;
 
@@ -27,11 +29,12 @@ public class PlayerKnight : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         groundCheck = transform.Find("GroundCheckKnight");
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-
+        // Sets Horizontal movement and animations
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         bool isWalking = Mathf.Abs(horizontalInput) > 0.01f;
         animator.SetBool("isWalking", isWalking);
@@ -48,6 +51,7 @@ public class PlayerKnight : MonoBehaviour
 
         if (isGrounded())
         {
+            // Gives player possibility to grace period after leaving Floor to Jump
             coyoteTimeCounter = coyoteTime;
         }
         else
@@ -57,21 +61,18 @@ public class PlayerKnight : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && coyoteTimeCounter > 0f)
         {
+            // Jump
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             coyoteTimeCounter = 0f;
+            audioSource.PlayOneShot(jumpSound, 0.1f);
         }
         ChangeOrientation();
         SwitchPlayer();
         Die();
     }
-
-    public void isJumping()
-    {
-        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
-    }
-
     private bool isGrounded()
     {
+        // Grounded check
         return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     }
     public void ChangeOrientation()
@@ -80,6 +81,7 @@ public class PlayerKnight : MonoBehaviour
 
         if (horizontalInput < 0f && isFacingRight || horizontalInput > 0f && !isFacingRight)
         {
+            // Flip to walk direction
             isFacingRight = !isFacingRight;
             Vector2 localScale = transform.localScale;
             localScale.x *= -1f;
@@ -89,9 +91,9 @@ public class PlayerKnight : MonoBehaviour
 
     public void SwitchPlayer()
     {
+        // Switch Player, stop ability to control the Characater and turn on Rogue
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("Pressing E");
             rb.velocity = Vector2.zero;
             gameObject.layer = LayerMask.NameToLayer("Player");
             playerRogue.layer = LayerMask.NameToLayer("Default");
@@ -103,8 +105,11 @@ public class PlayerKnight : MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             playerRogue.GetComponent<Rigidbody2D>().isKinematic = false;
         }
+
+        // Switch Player, stop ability to control the Characater and turn on Mage
         if (Input.GetKeyDown(KeyCode.Q))
         {
+
             rb.velocity = Vector2.zero; 
             gameObject.layer = LayerMask.NameToLayer("Player");
             playerMage.layer = LayerMask.NameToLayer("Default");
@@ -120,9 +125,11 @@ public class PlayerKnight : MonoBehaviour
     public void Die()
     {if (HealthManager.Instance.IsPlayerDead())
         {
+            // If player is Dead reload Scene after 1 second
             isDying = true;
             Invoke("ReloadScene", 1f);
-        }     
+
+        }
     }
     public void ReloadScene()
     {
